@@ -32,7 +32,7 @@ int main( ) {
 	cout <<"Input garbage to test validation, enter a number between -16 and 1024: ";
 	//getting input (within a cout statement) and outputting without using a temp variable
 	cout << "Input Accepted: "<< getValidInt( -16, 1024 ) <<endl <<endl; 
-														//extra endline 
+										//extra endline 
 	
 	cout <<"Third: Testing getValidInt(string prompt)...\n";
 	//using temp variables for prompt and input
@@ -42,7 +42,7 @@ int main( ) {
 	//passing prompt and range to getValidInt (within a cout statement),
 	//outputting int returned from function without using another temp variable
 	cout << "Input Accepted: "<< getValidInt( myPrompt ) <<'\n' << endl;
-														//extra endline 
+										//extra endline 
 	
 	//More Advanced: Using C Language I/O (cStrings, cstdio input/output )
 	puts("Fourth: Testing getValidInt(string prompt, int min, int max)..." );
