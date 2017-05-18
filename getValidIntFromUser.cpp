@@ -1,6 +1,10 @@
 /*
 	Get Valid Int From User, Multiple Examples
 	"Kitty-Cat Proof" User Input (Garbage Input Does Not Throw Program Into Infinite Loop)
+	---------------------------
+	Functions for getting a valid integer from the user. Includes functions receiving prompt strings and/or ranges. 
+	"Kitty-Cat Proof" input with cin, (using cin.good, cin.clear & cin.ignore ).
+	Some cstdio methods demonstrated, as well ( puts, putchar. getchar, printf, & sprintf ).
 	===========================
 	Code by Jason Lillard, 2017
 	===========================
