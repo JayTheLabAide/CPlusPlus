@@ -1,3 +1,9 @@
+/*
+	Simple Menu-Driven Program Skeleton (Using Functions)
+	===========================
+	Code by Jason Lillard, 2017
+	===========================
+*/
 #include <iostream>
 #include <string>
 #include <cstdio> //for BUFSIZ
