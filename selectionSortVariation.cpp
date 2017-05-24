@@ -107,7 +107,7 @@ void selectionSort(int arr[], int size){
 		swap( arr[i], arr[ indexOfMaxVal(arr,i+1) ] );  //$$$$ See explanatory note below function
 		//^^^^ this could be broken into 2 lines:
 		// int indexOfMax = indexOfMaxVal(arr,i+1);
-		// swap( arr[i], arr[indexOfMax];
+		// swap( arr[i], arr[indexOfMax]);
 	}
 }
 /*
