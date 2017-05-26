@@ -20,8 +20,8 @@ struct simpleLibrary{
   //this function is public by default
   void print(){ printf("Hello from a Simple Library instance!\n"); }
   //if you are making even a simple library, make as many functions "static" as possible
-  //"static" members only have one copy shared across all instances of the class, and if public 
-  //then they can be accessed without even making an instance of the struct or class 
+  //"static" members only have one copy shared across all instances of the class, and 
+  //can be accessed (if public) even without creating any instances of the class.
   static void printStatic(){ printf( "Hello from the Simple Library's Static Function!\n");}
 }; //don't forget that semicolon!
 
