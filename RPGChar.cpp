@@ -26,6 +26,7 @@ Item Item::operator=( const Item &rhs){ //equal sign operator override
 	this->type = rhs.type;
 	this->impact = rhs.impact;
 	strncpy( this->name, rhs.name, NAMESZ);
+	return *this; //return *this for chained assignment
 }
 
 //use strncpy to safely set name based on given string
@@ -38,6 +39,7 @@ Item * RPGChar::getItem(size_t index){
 	if (index < inventoryMax){
 		return (inventoryPtr+index);
 	}
+	return NULL;
 }
 //add item to inventory
 void RPGChar::addItem(Item &item){ //add at end, increment inventoryCurrent
