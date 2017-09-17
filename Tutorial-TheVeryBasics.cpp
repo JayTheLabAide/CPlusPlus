@@ -168,10 +168,10 @@ int main()	// don't forget the parenthesis! They show that main is a function.
 	// especially once we add in multiplication and division. (Think PEMDAS from gradeschool)
 	
 	//We can also set a variable to the values of another variable, or an equation
+	//And we can use the "*" symbol for multiplication.
 	int totalCats = x * y + 1; //NOTE: there is no "int" now before x or y
 	// We can also give our variables descriptive names where it makes sense. Or not.
-	
-	
+		
 	//Division Error 1:
 	// Don't divide by zero. The universe won't end, but your program might actually crash.
 	// Some programs like Excel will be user-friendly and tell you anything/0 = 0, and
@@ -191,6 +191,7 @@ int main()	// don't forget the parenthesis! They show that main is a function.
 	// in the code (like with 1/2 ) will try to be stored in a format
 	// which only deals in whole numbers. Having to worry about integer
 	// division is stupid, but like a lot of stupid things in computer science,
+	// you'll eventually come up with some clever uses for them.
 	int notHalf = 1/2; // Because 0.5 cannot be stored in an int, this variable "notHalf" equals 0
 	float alsoNothalf = 1/2; // trying to store 1/2 in a float still won't work, because of
 	// that "precedence" thing, 1/2 is calculated as problem involving integers, and the
@@ -496,13 +497,15 @@ int main()	// don't forget the parenthesis! They show that main is a function.
 		i = i+1			setting a variable to a value (based on its current value)
 	*/
 	//For Loop
-	int size = 5; // the size of our imaginary data array
+	int size = 5; // how many times our loop will go. (the "size" of our imaginary data array)
+	//Data is almost always accessed starting at number 0, so get used to counting that way in your "for" loops
 	for(int i = 0  ;  i < size  ;  i++ ){ // Go once for when i = 0, 1, 2, 3 and finally 4
+		cout<<"Message "<<i+1<<":\n"; //print which "iteration" of the loop we're on, (1-5), and use a \n newline
 		cout<<"Blast-off in "<< size-i <<"..."<<endl; //While i counts up, size-i will count down
 	}
 	cout<<"Ignition. We have blast off!"<<endl; //When code gets here, loop has finished
 	
-	
+	//RETURN FROM MAIN:	
 	//Finally, return 0 to show that no problems occurred during our program
 	return 0;
 }	// And don't forget to close int main() with this final curly brace
