@@ -77,7 +77,7 @@ int main(){
 		//STEP 4
 		//switch current player (rotate, P1 to P2 to P3 back to P1 )
 		if (current == &p1) current = &p2; //if pointing @ player 1, point @ p2
-		else if (current == &p2 ) current = &p3; //if pointing @ player 2, point @ p3
+		else if (current == &p2 ) current = &p3; //if @ player 2, point @ p3
 		else current = &p1; //else, pointing @ p3, point @ p1
 
 	} //END GAME LOOP
