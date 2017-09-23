@@ -7,7 +7,6 @@
 */
 
 #include <iostream>
-
 using namespace std;
 
 void waitUntilEnter(){ //when function is called, code will jump here
