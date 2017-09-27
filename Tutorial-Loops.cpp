@@ -8,7 +8,7 @@
 
 #include <iostream> //for cout and cin
 #include <random> //for default_random_engine, uniform_int_distribution -- C++11 STD!
-#include <ctime> //for clock and CLOCKS_PER_SEC (to generate seed for our random engine)
+#include <ctime> //for 2 calls to clock ( instead of time(0) ) to generate seed for our random engine
 using namespace std;
 
 int main(){
