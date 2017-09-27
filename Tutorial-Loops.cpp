@@ -6,7 +6,7 @@
 
 #include <iostream> //for cout and cin
 #include <random> //for default_random_engine, uniform_int_distribution
-#include <ctime> //for clock and CLOCKS_PER_SEC (to generate seed for srand)
+#include <ctime> //for clock and CLOCKS_PER_SEC (to generate seed for our random engine)
 using namespace std;
 
 int main(){
