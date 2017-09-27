@@ -206,7 +206,7 @@ int main(){
 	
 	cout<<"Oh well. I'll win 'em back right quick.\n"
 		<<"Here, watch me play a game of what I call Craps...\n"
-		<<"We'll bet "<< passBet <<" of the chickens from my other property."
+		<<"We'll bet "<<passBet<<" of the chickens from my other property.\n"
 		<<"Let's roll!"<<endl;
 		
 	do{ //Since do-while is a "post-test" loop, this code runs at least once:
