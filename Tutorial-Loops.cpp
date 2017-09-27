@@ -100,27 +100,27 @@ int main(){
 		//Step 3: Re-initialize your inner loop counter. (AKA zero it out)
 		x = 0; //If you forget this, the inner loop will only draw one line
 	
-		//Step 3: Inner loop header 
+		//Step 4: Inner loop header 
 		while (x < MAX_X){
-			//Step 4: Print one character to the screen
+			//Step 5: Print one character to the screen
 			cout<<'X'; 	// DON'T USE AN ENDL OR YOU'LL BREAK THE LINE
 			//(This is how we draw one line of text left to right)
 		
-			//Step 5: Increment INNER loop counter.
+			//Step 6: Increment INNER loop counter.
 			//Don't think we can skip this step just because we're "nested"
 			x++;
 			
 		}	//<--- end of while (x < MAX_X);
 		
-		//Step 6: Once the inner loop has drawn its line of text, NOW do endl
+		//Step 7: Once the inner loop has drawn its line of text, NOW do endl
 		cout<<endl;
 		
-		//Step 7: Increment OUTER loop counter.
+		//Step 8: Increment OUTER loop counter.
 		y++;
 		
 	}//<---- end of while (y < MAX_Y)
 
-	//Step 8: Loop is over, perhaps output results.
+	//Step 9: Loop is over, perhaps output results.
 	cout<<"Here is the henhouse what done houses the chickens."<<endl;
 	
 	
