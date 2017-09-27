@@ -1,5 +1,7 @@
 /*
-	Intro to loops. Yeah, that's pretty much it.
+	Intro to loops. Chicken-themed for some reason.
+	Also includes a rough implementation of the dice game Craps.
+	I was kind of all over the place with this one.
 	--------------------------------------------
 	Code by Jason Lillard, 2017
 */
