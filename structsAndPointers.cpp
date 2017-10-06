@@ -136,7 +136,8 @@ int main(){
 		//dynamic allocation in a struct still uses "new datatype [ size ]" format
 		objWithPtr.fPtr = new float[ARRSZ]; //access pointer in object with "dot operator" i.e. "."
 		puts("We access elements inside with: objWithPtr.fPtr[i]");
-		for(int i = 0; i < ARRSZ; i++) objWithPtr.fPtr[i] = 1<<i; //fill with 32 powers of 2 
+		//fill with 32 powers of 2 (bitshift an unsigned long (specified with UL), store in a float)
+		for(int i = 0; i < ARRSZ; i++) objWithPtr.fPtr[i] = 1UL<<i; 
 		//Uses right bit-shift, x<<i = x multiplied by 2 i number of times
 		
 		//now let's print out the array using the slightly more complicated syntax
@@ -145,8 +146,7 @@ int main(){
 			printf("%-12.0f ", *(objWithPtr.fPtr+i) );
 			if ( (i+1)%4==0)putchar('\n');
 		}
-		puts("Oh, look. We blew up our float.\n"
-				"I didn't even know those could overflow. Oh well, moving on...\n"
+		puts(
 				"Don't forget to delete the array & nullify the pointer.\n"
 				"the command \"delete []\" still works, and we use \".\" to access the ptr:\n"
 				"delete [] objWithPtr.fPtr");
