@@ -44,7 +44,7 @@ void getString( string &str){
 
 int main(){
 	 //make a 100-char long c-string, (empty curly braces set all values to 0)
-	char cstring[100];
+	char cstring[100]{}; //NOTE: empty braces to zero-initialize array only works on c++11
 	cout<<"Enter a long string: "; //prompt
 	getString (cstring); //get input
 	cout<<"Your long string: "<<cstring<<endl; //echo input
