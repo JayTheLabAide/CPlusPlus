@@ -70,7 +70,8 @@ void callMe(){
 //Our second function will first say "Hello?" and then call the first func.
 void callThem(){
 	cout<<"Hello?"<<endl; 
-	//To "call" our function, we just use the function name after
+	//To "call" our function, we just use the function name (after we have
+	//already declared it above) and follow the name with parentheses.
 	callMe();
 }
 
