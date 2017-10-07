@@ -95,9 +95,9 @@ void printInteger( int toPrint ){
 //Also special with this function is the "&" symbol, which means that instead
 //of passing a copy of a value, we are going to pass the actual variable itself
 //that exists somewhere else -- and we can change it here and the change will
-//show up where the variable was made. For our toPrint function, for example,
-//if we tried to modify the value of toPrint, it wouldn't change the value
-//back in main  (or wherever we were when we called toPrint(int) ).
+//show up where the variable was made. For our printInteger(int) function, for 
+//example, if we tried to modify the value of toPrint, it wouldn't change the
+//value back in main, (or wherever we were when we called printInteger(int) ).
 
 void integerX2( int & valToDouble ); //semicolon & no curly brace = prototype
 
