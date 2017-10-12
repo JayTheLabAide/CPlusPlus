@@ -1,16 +1,12 @@
 /*
 	Functions Tutorial 2
 	--------------------
-	THIS VERSION IS INCOMPLETE -- SOME FUNCTIONS AREN'T YET TESTED IN MAIN
-	You can implement these final tests yourself as an exercise, but I will
-	try to finish this tutorial completely over the next week or two.
-	--------------------
 	Code by Jason Lillard
 */
 
-#include <iostream>
-#include <string>
-#include <ctime> //for clock() to get # of clock cycles since program start
+#include <iostream> //for cout and cin objects
+#include <string> //for string objects
+#include <ctime> //for time(0) to get # of seconds (UNIX Time)
 using namespace std;
 
 /*
@@ -291,12 +287,15 @@ char * findSpace( char * cstr ){
 	
 	//Boring linear search. Check every item and when you find it stop checking.
 	
-//while we haven't reached the end of the c-string or set result to something...
-	while( *cstr != '\0' && !result ){ 
+//while we haven't set result to something...
+	while( !result ){ 
 		//Check if the current character is anything we're looking for
-		//(This switch block looks weird but it's just smushed onto one line.)
+		//(This switch block looks weird but it's just smushed.)
 		switch ( *cstr ){
-			case ' ': case '\t': case '\r': case '\n': result = cstr; default:;
+			case ' ': case '\t': case '\r': case '\n': case '\0':
+				result = cstr;
+			default:
+				cstr++;
 		}
 		/*
 			Notice though that result and cstr don't have * in front.
@@ -316,6 +315,7 @@ char * findSpace( char * cstr ){
 			4. Pointers also have their own addresses.
 		*/
 	}
+	
 	return result; //whether result is null or a found space, return it
 }
 
@@ -458,25 +458,26 @@ void killHeapFlags( bool * & boolPtrRef ){ //A reference to a pointer to a bool
 //Sometimes we want a function to remember whether it has run before or not.
 //There are times when something must be set up once and then every other time
 //the function can skip that set-up step. Once use of an initializer flag
-//is for random numbers. Here's a similar set-up for a clock-cycle timer
-//This function depends on the "clock()" function linked to by "#include <ctime>
-//clock() returns the number of CPU clock cycles since the start of the program.
+//is for random numbers. Here's a similar set-up for a second timer
+//This function depends on the "time(0)" function linked to by "#include <ctime>
+//time(0) returns the number of seconds since the beginning of the year 1970.
 
-unsigned long long clockTimer(){ //this function returns a giant integer type
+time_t clockTimer(){ //this function returns a giant integer type
 	//Here is our flag which will keep track of first run vs later runs
 	//it is static because we don't want the function to forget it
 	static bool isSetUp = false;
-	//Here's the variable which will remember the # from first call to clock()
-	static unsigned long long cycleAtFirstCall; //No starting value here.
+	//Here's the variable which will remember the # from first call to time(0)
+	static time_t firstTimeVal; //No starting value here.
 	if ( isSetUp==false ){ // if we have not run our set-up code yet:
 		//set our static variable for starting time
-		cycleAtFirstCall = clock();
+		firstTimeVal = time(0);
 		//set our static bool flag for set-up having finished
 		isSetUp=true;
 	}
 	//And every time this func. is called, we return the elapsed time:
 	//(The first time this func is called this number will be fairly small.)
-	return clock() - cycleAtFirstCall; //return newTime - oldTime
+	
+	return (time(0) - firstTimeVal); //return newTime - oldTime
 }
 //(Note on timer math: Since now > then, "now - then" will always be positive)
 
@@ -615,6 +616,10 @@ void printReverse( const char * cstr, unsigned len ){
 /////////////////////////////////////MAIN START////////////////////////////////
 int main(){
 	
+	//Setup for 4.a: start our cpu clock timer
+	cout<<"Setup for clockTimer: "<<clockTimer()<<endl;
+	////////////////////////////////////////////////////////////////////////////
+	
 	//Test of 1.a
 	//Notice that our "intro" string itself doesn't have to be const to be
 	//passed to a function expecting a const. The function will just treat our
@@ -680,7 +685,7 @@ int main(){
 		} while (!accepted); //end input-verification do-while loop
 				
 	} //end array-traversing "for loop"
-	
+	cin.ignore(); //Ignore '\n' left in input stream by cin>> getting a number
 	
 	//now let's get that difference, stored in a new double variable
 	double diff = diffHighAvg( myArray, ARRSZ); //give function array and size
@@ -710,30 +715,144 @@ int main(){
 	}
 	
 	////////////////////////////////////////////////////////////////////////////
-
-	//TODO: WRITER DEMO/DRIVERS FOR OTHER FUNCTIONS TO DEMONSTRATE USE
-	
-	////////////////////////////////////////////////////////////////////////////
 	//Test of 3.b
 	//printCString
+	
+	//Let's make a c-string with a character array instead of a const pointer.
+	const unsigned C_ARR_STR_SZ = 40;
+	char cArrStr[ C_ARR_STR_SZ ]="This is a char array string.\n";
+	//And let's make a string out of a const char pointer.
+	const char * cPtrStr =
+			"This is also an array, pointed to by a const char *\n";
+	//And let's make a string object
+	string strObj = "This is a string object\n";
+	
+	//We don't need to know the size for this function because it stops printing
+	//once it reaches a null terminator character.
+	
+	//Now let's use our print c-string function to print each of these
+	printCStr ( cArrStr );
+	//Since we don't know the length of our const char array, let's call strlen
+	//from the cstring libray.
+	printCStr ( cPtrStr ); 
+	//And let's print the string object by calling its c_str() and size() funcs.
+	printCStr ( strObj.c_str() );
 	
 	////////////////////////////////////////////////////////////////////////////
 	//Test of 3.c
 	//findSpace
+	const unsigned INBUFSIZ = 50;
+	char inputBuffer[INBUFSIZ];
+	
+	//Now let's get a string from the user and find the first space
+	printCStr ( 
+			"\n\nInput some words and characters, and we'll get a pointer to\n"
+			"the first space found in the string:\n"
+			);
+	//Use cin.getline to fill a c-string with a set number of characters
+	cin.getline(inputBuffer, INBUFSIZ, '\n');
+	//Here's our call to our function to find the location of the first space
+	const char * space = findSpace( inputBuffer );
+	int foundAt = (space-inputBuffer); //
+	
+	cout	<<"The first space was found at address: "
+			//cast to number to see address
+			<< (unsigned long)space
+			<< " found at index "
+			<< foundAt //location of space - starting location
+			<< "."
+			<< endl;
+	
+	//Remember index numbers start at 0, so if a space is the first char
+	//in your string then your result will be "0"
+	
 	
 	////////////////////////////////////////////////////////////////////////////
 	//Test of 3.d
 	//makeHeapFlags
+	cout<<"\nNow let's make an array of bool flags to keep track of something\n"
+			"simple, like whether doors in our level are locked or not.\n";
+	const unsigned FLAGSZ = 10;
+	bool * bptr = makeHeapFlags( FLAGSZ); //our function returns a pointer
+	//to the bool array, and we catch this return value and store it in
+	//a bool pointer so we have access to that array created in the function.
 	
+	//Now let's set our flags "randomly" based on the bits of our second timer
+	//multiplied by some big prime number.
+	time_t duration = clockTimer();
+	//I picked a random prime from the list at:
+	//http://compoasso.free.fr/primelistweb/page/prime/liste_online_en.php
+	duration *= 19373; //further randomize our "duration" number
+	
+	for( int i = 0; i < FLAGSZ ; i++){
+		//Now we'll essentially convert duration into binary and shove some of
+		//the bits in it into flags. (Since duration has 64 bits and we only
+		//need 10, this won't be a full conversion to binary)
+		
+		//set current flag to 0 or 1 based on remainder
+		bptr[i] = (duration%2ULL); 
+		duration/=2; //Divides the integer value in half
+		
+	} //end for loop to set our bool flags on the heap
+	
+	cout<<"Let's check whether the doors are locked or not:"<<endl;
+	for(int i = 0; i < FLAGSZ ; i++){
+		//Let's output the first part of our msg which doesn't change
+		cout<<"Flag "<<i<<" is ";
+		
+		//Now let's output based on true or false
+		bool locked = bptr[i]; //Get current flag value, store in "locked"
+		
+		if ( locked ) { //if bptr[i] == true
+			cout<<"true, door is locked."<<endl;
+		}
+		else { //if bptr[i] == false
+			cout<<"false, door is open."<<endl;
+		}
+		
+		
+	}//end loop to output status of each flag
+	
+	//And now that we're done with the array, let's call our deallocation func.
 	//killHeapFlags
+	killHeapFlags ( bptr );
+	cout<<"Now our bool pointer has been deallocated and set to: "<<bptr<<endl;
 	
 	////////////////////////////////////////////////////////////////////////////
 	//Test of 4.a
-	//clockTimer (static function for tracking duration)
+	//clockTimer [static function for tracking duration]
+	cout<<"Our current clock timer from our static function is:"<<endl;
+	cout<< clockTimer() <<endl;
 	
 	////////////////////////////////////////////////////////////////////////////
 	//Test of 4.b
-	//keepTrack (static accumulator function)
+	//keepTrack [static accumulator function]
+	cout<<"\nNow let's test our second-to-last function, our accumulator\n"
+		"which uses a static variable within the function to keep track of\n"
+		"the sum of values given to the function"<<endl;
+	cout<<"Enter 5 Values:"<<endl;
+	for(int i = 0; i < 5; i++){
+		bool accepted = false;
+		double d_input;
+		do{
+			cout<<"Enter value number "<<i+1<<": ";
+			//This cin will store vals at index 0, 1, 2, 3, then 4 as this loops
+			cin>> d_input; 
+			//Input Verification
+			if (!cin.good()){ //if input failed
+				cin.clear(); //clear "fail" flag (do first)
+				cin.ignore(1024, '\n'); //ignore input buffer (do second)
+			}
+			else accepted = true; //otherwise, input was good.
+			
+		} while (!accepted); //end input-verification do-while loop
+		//Ignore '\n' left in input stream by cin>> getting a number
+		cin.ignore(); 
+		keepTrack( d_input );
+	}
+	
+	cout<<"After adding 5 values to the accumulator in keepTrack, it returns: "
+		<< keepTrack() <<endl;
 	
 	////////////////////////////////////////////////////////////////////////////
 	//Test of 5
@@ -744,7 +863,10 @@ int main(){
 	//And we can also use the .size() function of a string to get its length.
 	printReverse( toReverse.c_str() , toReverse.size() );
 	
+	cout<<"The tutorital is complete! You survived! And I survived making it!\n"
+		<<"Now go celebrate by doing literally anything else."<<endl;
 	
-	
+	//And let's return 0 from main to indicate nothing went wrong
+	return 0;
 }
 /////////////////////////////////////MAIN END////////////////////////////////
