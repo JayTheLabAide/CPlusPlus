@@ -50,7 +50,7 @@ which take a const data type which is a reference (indicated with "&")
 
 Now, the vector header is big, and this tutorial is complicated enough, so let's
 use a class you're probably much more familiar with, and which is essentially a
-vector of charactors: the string class.
+vector of characters: the string class.
 */
 
 //This function is void, so it doesn't return anything.
