@@ -79,6 +79,7 @@
 #include <iostream> //for simple input/output
 #include <cstdlib> //for rand() and srand(), random numbers
 #include <ctime> //for clock() and time(0)
+#include <cstdio> // for BUFFSIZ
 using namespace std;
 
 int main(){
