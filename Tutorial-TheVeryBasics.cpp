@@ -9,7 +9,7 @@
 		/* 
 		and ends with a
 		*/
-	// This line is not in the above comment.
+	// This line is not in the above comment, which ended with the "*/" above it.
 	
 	// A comment can also start with a "//" and you will see this often here.
 	// If I want to use these I have to put them at the start of (every) line;
@@ -54,6 +54,8 @@
 	old school -- "subroutines." 
 	TLDR: "Includes" have code that's already written for us, so it makes stuff much easier.
 */
+
+//Now let's start typing some real code:
 
 //We need iostream to display text to the "console" or "terminal" and get input from the users
 //You're a long way from graphics, kid. Get used to the look of fixed-width characters.
@@ -286,11 +288,11 @@ int main()	// don't forget the parenthesis! They show that main is a function.
 	 If nothing is already sitting in the input buffer, the program will wait until the user
 	 types something in, and then presses Enter
 	 You may also recall I mentioned cin has its source and destination backwards.
-	 Where "cout<<"Enter a number:"" actually follows a usual formula of:
+	 The line "cout << "Enter a number:";" actually follows a usual formula of:
 	 destination operator source,
-	 like x = 10, but cin is backwards, and is used as:
+	 similar to "x = 10". But cin is backwards, and is used like:
 	 source operator destination
-	 where cin, the user input, is the source.
+	 And cin, the user input, is the source.
 	 In summary, do cout << pointed out away from your document, and cin >> pointed into it.
 	*/
 	
