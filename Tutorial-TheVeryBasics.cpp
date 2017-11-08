@@ -137,16 +137,19 @@ int main()	// don't forget the parenthesis! They show that main is a function.
 	/*
 		There's that word "int" again. Here it is also short for "integer."
 		In computer science, "integer" types can't hold fractions. They can,
-		however, hold numbers from (depending on your computer)	-2^32 to
-		(2^32)-1
+		however, hold numbers from (depending on your computer)	-2^31 to
+		(2^31)-1
 		Why is there one less positive number than negative number?
 		Because bits.
-		That's why. In short: you need a single bit for the negative sign,
-		and as a result there's one number technically possible to make
-		which isn't really interpreted as a distinct number: -0
-		This is a little funny, and also slightly annoying, because
-		we lose a combination of bits which could be used for a number. 
-		Think of it like daylight savings time: It's stupid.
+		That's why.
+		If you want to know more, in short: you need a single bit to store the
+		negative sign within an int, a short, or a long variable,
+		and as a result there's one number we could potentially make which 
+		might surprise us: -0.
+		This is a little funny, but could also be a waste of space.
+		So to avoid -0 being just another version of 0, it is interpreted as
+		-2^31 or -2,147,483,648, which is one further from 0 than the upper
+		range of an integer, (2^31)-1, or 2,147,483,647.
 		
 		x = 10
 		The meaning of this should be obvious. There is a thing called x
@@ -327,7 +330,7 @@ int main()	// don't forget the parenthesis! They show that main is a function.
 	{ //notice the curly braces, these make up the code block that happens ONLY IF the condition is true
 		//here in the code block, since "isDoorOpen == false" is true, since we set it to false ourselves,
 		//we will execute the code to open the door.
-		cout<<"Opening door.."<<endl;
+		cout<<"Opening door..."<<endl;
 		isDoorOpen = true; //now our bool type variable is set to true
 	}
 	
