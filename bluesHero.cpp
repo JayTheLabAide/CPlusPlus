@@ -66,7 +66,7 @@ int main(){
 		//4 4 R R
 		//5 4 R 5
 		
-		if ( (clock()-last)>=clocksBetweenBeats ){
+		if ( (clock()-last)>=clocksBetweenBeats*4 ){//every 4 beats show chord
 			last = clock();
 			switch(measure){
 				//4th
