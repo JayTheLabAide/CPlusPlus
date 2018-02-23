@@ -6,7 +6,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+    //absolute value
     float abso(float n);
     
     //calculate distance using primitive variables
