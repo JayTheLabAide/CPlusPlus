@@ -21,6 +21,19 @@ void normalize( float * x, float * y){
 
 char touchesCircle( float px, float py, float cx, float cy, float r){
     //if distance between point and circle center <= radius, return true
-    if ( dist(px, py, cx, cy)<=r ) return 1;
+    //slightly slower version:
+    //if ( dist(px, py, cx, cy)<=r ) return 1;
+    /* 
+     * This slightly faster version takes advantage of the fact that we
+     * can square both sides of the equation:
+     * sqrt( xDist*xDist+yDist*yDist) <= r
+     * which eliminates the relatively slow function call to sqrt(),
+     * trading it for a much quicker multiplication operation (r*r),
+     * and our resulting equation is:
+     * (xDist*xDist+yDist*yDist) <= r*r
+    */
+    float xDist = abso( px-cx);
+    float yDist = abso( py-cy);
+    if ( (xDist*xDist+yDist*yDist) <= r*r ) return 1;
     else return 0; //otherwise, test point is further than radius can reach
 }
