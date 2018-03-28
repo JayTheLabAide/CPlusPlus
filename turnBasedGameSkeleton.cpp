@@ -34,15 +34,17 @@ int main(){
 	Player * current = &p1; //pointers hold the addresses of existing objects
 	
 	cout<<"Welcome to the nothing game."<<endl; //title/intro
+	cout<<"Each player enters points until one player has over 1000."<<endl;
+	cout<<"It's the worst game ever, but at least everyone takes turns."<<endl;
 	//Get player names (and use . to get variables inside player objects)
 	//like player.name or player.score
 	//(This is slightly different with pointers, where we use -> instead of .)
 	cout<<"Enter player one's name: ";
-	cin>>p1.name;
+	getline(cin, p1.name);
 	cout<<"Enter player two's name: ";
-	cin>>p2.name;
+	getline(cin, p2.name);
 	cout<<"Enter player three's name: ";
-	cin>>p3.name;
+	getline(cin, p3.name);
 	 
 	//SET ALL PLAYER SCORES TO ZERO (if we don't, they start with garbage vals)
 	p1.score = 0;
