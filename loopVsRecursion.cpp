@@ -41,7 +41,7 @@ void countUp(short r){
 
 /*
 	Here's something very common with recursive functions: a helper function
-	that start's the recursive "loop." We don't need this, but this makes
+	that starts the recursive "loop." We don't need this, but this makes
 	starting the recursion easier, as we don't have to use countUp in main
 	with a call like countUp(1); We can now call countUp() with no "arguments"
 	passed in to it. Since the "parameter list" of this countUp is different
