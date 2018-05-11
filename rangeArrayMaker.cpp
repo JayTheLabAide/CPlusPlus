@@ -12,6 +12,10 @@
 	(which is used to store unicode characters, usually when
 	you're dealing with input from the internet or the
 	operating system).
+	
+	===========================
+	Code by Jason Lillard, 2018
+	===========================
 */
 
 #include <iostream>
