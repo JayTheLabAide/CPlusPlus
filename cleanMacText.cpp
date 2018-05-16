@@ -7,12 +7,12 @@ int main(){
 	
 	
 	string fname;
-	string fOutName = fname+"_pc";
 	cout<<"File Name:";
 	getline(cin, fname);
 	
 	ifstream inFile(fname.c_str() );
 	
+	string fOutName = fname+"_pc";
 	ofstream outFile(fOutName.c_str() );
 	
 	
