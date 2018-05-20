@@ -32,8 +32,8 @@ char touchesCircle( float px, float py, float cx, float cy, float r){
      * and our resulting equation is:
      * (xDist*xDist+yDist*yDist) <= r*r
     */
-    float xDist = abso( px-cx);
-    float yDist = abso( py-cy);
+    float xDist = px-cx;
+    float yDist = py-cy;
     if ( (xDist*xDist+yDist*yDist) <= r*r ) return 1;
     else return 0; //otherwise, test point is further than radius can reach
 }
