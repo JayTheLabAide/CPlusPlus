@@ -65,7 +65,7 @@ void RPGChar::addItem(Item &item, size_t index){ //add/overwite at place, increm
 
 //delete item from given place
 void RPGChar::deleteItem(size_t index){ //deallocate item and decrement inventoryCurrent
-	if ( inventoryPtr[index].type == ItemType::NONE ){ //if item is deleting something
+	if ( inventoryPtr[index].type != ItemType::NONE ){ //if item is deleting something
 		inventoryCount--; //decrement inventoryCurrent
 	}
 	inventoryPtr[index] = Item(); //assign item to default Item using operator= override
