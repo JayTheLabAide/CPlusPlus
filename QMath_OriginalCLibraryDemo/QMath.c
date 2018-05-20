@@ -7,8 +7,8 @@ float abso(float n){
 }
 
 float dist( float x1, float y1, float x2, float y2){
-    float xDist = abso( x1-x2);
-    float yDist = abso( y1-y2);
+    float xDist = x1-x2;
+    float yDist = y1-y2;
     return sqrt( xDist*xDist+yDist*yDist);
 }
 
