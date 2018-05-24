@@ -8,13 +8,6 @@ using namespace std;
 ////////////////////////////////////////////////////////////////////////////////
 //BEGIN MAKEANDRUNMENU.H
 
-/*
-	Here's the first part, where we make typing everything out
-	a little easier for ourself by declaring a type of function
-	pointer called "funcType" which will be able to hold the
-	addresses of void functions which take a float by reference.
-*/
-typedef    void (*funcType)(float & data);
 
 /*
 	Now we'll make a template function which takes in two arguments
@@ -71,15 +64,29 @@ void makeAndRunMenu( FT funcPtrArr[], DT& data,
 //END MAKEANDRUNMENU.H
 ////////////////////////////////////////////////////////////////////////////////
 
+
+/*
+	USAGE
+*/
+
+/*
+	Here's the first part of our usage of our function, where we make typing
+	everything out a little easier for ourself by declaring a type of function
+	pointer called "funcType" which will be able to hold the
+	addresses of void functions which take a float by reference.
+*/
+typedef    void (*funcType)(float & data);
+
 /*
 	Now here are a bunch of functions we can use in our menu
 */
 
+//Shows a float with some formatting.
 void showFloat(float & f){
 	cout<<setprecision(2)<<fixed<<showpoint;
 	cout<<"Current Float: "<<setw(20)<<f<<endl;
 }
-
+//Sets the float passed in
 void setFloat(float & f){
 	bool valid = false;
 	float temp;
@@ -95,18 +102,18 @@ void setFloat(float & f){
 	}while(!valid);
 	//temp is valid, so save it to f
 	f = temp;
-	
 }
-
+//Sets the float passed in back to zero.
 void resetFloat(float & f){
 	f=0;
 	cout<<"Float has now been reset."<<endl;
 }
-
 /*
-	IMPLEMENTATION
+	Here's our main, where we make our array of strings for menu options,
+	our array of functions for menu options,
+	our data which we'll give by reference to each menu function,
+	and finally our call to makeAndRunMenu with all relevant data
 */
-
 int main(){
 	unsigned short CHOICES = 3;
 	//the names which will be shown in the menu
@@ -120,5 +127,7 @@ int main(){
 	//the array of functions, the data, the array of names, and number
 	//of menu items.
 	makeAndRunMenu<funcType, float>( funcs, data, funcNames, CHOICES);
-
+	//One more output to show we made it out of the menu function.
+	cout<<"Goodbye."<<endl;
+	return 0;
 }
